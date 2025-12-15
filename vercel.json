@@ -1,8 +1,27 @@
 {
   "version": 2,
-  "rewrites": [
-    { "source": "/auth/:path*", "destination": "/Frontend/auth/:path*" },
-    { "source": "/", "destination": "/Frontend/main/index.html" },
-    { "source": "/:path*", "destination": "/Frontend/:path*" }
-  ]
+  "builds": [
+    {
+      "src": "Backend/src/server.js",
+      "use": "@vercel/node"
+    },
+    {
+      "src": "Frontend/**",
+      "use": "@vercel/static"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/api/(.*)",
+      "dest": "Backend/src/server.js"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "Frontend/$1"
+    }
+  ],
+  "env": {
+    "MONGODB_URI": "@mongodb_uri",
+    "JWT_SECRET": "@jwt_secret"
+  }
 }

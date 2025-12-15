@@ -4,7 +4,7 @@ const SHOP_API_BASE =
   window.API_BASE ||
   (window.location.hostname === "localhost" || window.location.hostname === "127.0.0.1"
     ? "http://localhost:5000/api"
-    : `${window.location.origin.replace(/\/$/, "")}/api`);
+    : "https://localpick25.vercel.app/api");
 window.API_BASE = SHOP_API_BASE;
 
 function getToken() {
