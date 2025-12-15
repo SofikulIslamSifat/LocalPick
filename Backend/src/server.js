@@ -19,11 +19,9 @@ app.use(cors());
 app.use(express.json());
 app.use(morgan("dev"));
 
-// Serve frontend static files
 const frontendDir = path.join(__dirname, "..", "..", "Frontend");
 app.use(express.static(frontendDir));
 
-// Serve homepage from the frontend bundle
 app.get("/", (_req, res) => {
   res.sendFile(path.join(frontendDir, "main", "index.html"));
 });

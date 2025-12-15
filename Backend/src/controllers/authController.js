@@ -35,9 +35,8 @@ exports.register = async (req, res) => {
         .json({ message: "An account already exists for this email/phone." });
     }
 
-    const passwordHash = await bcrypt.hash
-    const user = await Us(password, 12);
-er.create({
+    const passwordHash = await bcrypt.hash(password, 12);
+    const user = await User.create({
       name,
       phone,
       email: email.toLowerCase(),
